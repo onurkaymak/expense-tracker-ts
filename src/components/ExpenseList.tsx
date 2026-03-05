@@ -1,6 +1,5 @@
 import type { FormEvent } from "react";
 import { useState } from "react";
-import { useRef } from "react";
 import type { Expense } from "../types.ts";
 
 interface Props {
@@ -15,17 +14,12 @@ interface Props {
 
 const ExpenseList = ({ expenses, onEditExpense, onDeleteExpense }: Props) => {
   const [editingId, setEditingId] = useState<string | null>(null);
-
-  const editExpenseRef = useRef<HTMLInputElement>(null);
-  const editAmountRef = useRef<HTMLInputElement>(null);
+  const [descriptionInput, setDescriptionInput] = useState<string>("");
+  const [amountInput, setAmountInput] = useState<number>(0);
 
   const editHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    onEditExpense(
-      editingId,
-      editExpenseRef.current?.value,
-      parseInt(editAmountRef.current?.value),
-    );
+    onEditExpense(editingId, e.target[0].value, parseInt(e.target[1].value));
     setEditingId(null);
   };
 
@@ -35,7 +29,7 @@ const ExpenseList = ({ expenses, onEditExpense, onDeleteExpense }: Props) => {
         {expenses.length === 0 && <p>There is no expense yet.</p>}
         {expenses.length !== 0 &&
           expenses.map((e) => {
-            if (editingId !== null && e.id === editingId) {
+            if (e.id === editingId) {
               return (
                 <div key={e.id}>
                   <form action="" onSubmit={editHandler}>
@@ -44,12 +38,16 @@ const ExpenseList = ({ expenses, onEditExpense, onDeleteExpense }: Props) => {
                       <input
                         type="string"
                         name="expense"
-                        ref={editExpenseRef}
+                        defaultValue={descriptionInput}
                       ></input>
                     </div>
                     <div>
                       <label htmlFor="amount">Amount:</label>
-                      <input type="number" name="amount" ref={editAmountRef} />
+                      <input
+                        type="number"
+                        name="amount"
+                        defaultValue={amountInput}
+                      />
                     </div>
                     <div>
                       <button type="submit">Submit</button>
@@ -77,6 +75,8 @@ const ExpenseList = ({ expenses, onEditExpense, onDeleteExpense }: Props) => {
                       <button
                         onClick={() => {
                           setEditingId(e.id);
+                          setDescriptionInput(e.description);
+                          setAmountInput(e.amount);
                         }}
                       >
                         Edit
