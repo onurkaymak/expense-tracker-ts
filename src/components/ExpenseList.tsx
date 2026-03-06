@@ -14,12 +14,12 @@ interface Props {
 
 const ExpenseList = ({ expenses, onEditExpense, onDeleteExpense }: Props) => {
   const [editingId, setEditingId] = useState<string | null>(null);
-  const [descriptionInput, setDescriptionInput] = useState<string>("");
-  const [amountInput, setAmountInput] = useState<number>(0);
+  const [description, setDescription] = useState<string>("");
+  const [amount, setAmount] = useState<number>(0);
 
   const editHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    onEditExpense(editingId, e.target[0].value, parseInt(e.target[1].value));
+    onEditExpense(editingId, description, amount);
     setEditingId(null);
   };
 
@@ -38,7 +38,8 @@ const ExpenseList = ({ expenses, onEditExpense, onDeleteExpense }: Props) => {
                       <input
                         type="string"
                         name="expense"
-                        defaultValue={descriptionInput}
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
                       ></input>
                     </div>
                     <div>
@@ -46,7 +47,8 @@ const ExpenseList = ({ expenses, onEditExpense, onDeleteExpense }: Props) => {
                       <input
                         type="number"
                         name="amount"
-                        defaultValue={amountInput}
+                        value={amount}
+                        onChange={(e) => setAmount(Number(e.target.value))}
                       />
                     </div>
                     <div>
@@ -75,8 +77,8 @@ const ExpenseList = ({ expenses, onEditExpense, onDeleteExpense }: Props) => {
                       <button
                         onClick={() => {
                           setEditingId(e.id);
-                          setDescriptionInput(e.description);
-                          setAmountInput(e.amount);
+                          setDescription(e.description);
+                          setAmount(e.amount);
                         }}
                       >
                         Edit
