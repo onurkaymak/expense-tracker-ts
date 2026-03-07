@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { FormEvent } from "react";
 
 interface Props {
@@ -27,6 +27,13 @@ const ExpenseItem = ({
   const [description, setDescription] = useState<string>("");
   const [amount, setAmount] = useState<number>(0);
 
+  useEffect(() => {
+    if (isEditing) {
+      setDescription(expenseDescription);
+      setAmount(expenseAmount);
+    }
+  }, [isEditing, expenseDescription, expenseAmount]);
+
   const editHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     onEditExpense(expenseId, description, amount);
@@ -43,8 +50,6 @@ const ExpenseItem = ({
               <button
                 onClick={() => {
                   setEditingId(expenseId);
-                  setDescription(expenseDescription);
-                  setAmount(expenseAmount);
                 }}
               >
                 Edit
