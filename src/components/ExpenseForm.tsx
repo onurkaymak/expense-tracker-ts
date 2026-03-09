@@ -25,32 +25,34 @@ const ExpenseForm = ({ onSetExpense }: Props) => {
   };
 
   return (
-    <div className="mt-10">
-      <form
-        action=""
-        className="bg-gray-500 p-10 rounded-xl"
-        onSubmit={formSubmitHandler}
-      >
-        <div>
-          <label htmlFor="expense-name">Expense:</label>
-          <input
-            type="text"
-            name="expense-name"
-            className="border-solid m-2"
-            ref={expenseInputRef}
-          />
-        </div>
-        <div>
-          <label htmlFor="expense-amount">Amount:</label>
-          <input
-            type="number"
-            name="expense-amount"
-            className="border-solid m-2"
-            ref={amountInputRef}
-          />
-        </div>
-        <button type="submit">Submit</button>
-      </form>
+    <div className="mt-auto justify-items-center">
+      <div className="w-100">
+        <form
+          action=""
+          className="bg-gray-500 p-10 rounded-xl"
+          onSubmit={formSubmitHandler}
+        >
+          <div>
+            <label htmlFor="expense-name">Expense:</label>
+            <input
+              type="text"
+              name="expense-name"
+              className="border-solid m-2"
+              ref={expenseInputRef}
+            />
+          </div>
+          <div>
+            <label htmlFor="expense-amount">Amount:</label>
+            <input
+              type="number"
+              name="expense-amount"
+              className="border-solid m-2"
+              ref={amountInputRef}
+            />
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
     </div>
   );
 };

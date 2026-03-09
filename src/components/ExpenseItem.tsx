@@ -41,13 +41,14 @@ const ExpenseItem = ({
   };
 
   return (
-    <div>
+    <div className="bg-gray-800 p-5">
       {!isEditing ? (
-        <div className="bg-gray-500 p-1 pt-3 pb-3 rounded-lg shadow m-2 w-50">
+        <div>
           <div>
             {expenseDescription} : {expenseAmount}
             <div>
               <button
+                className="m-1"
                 onClick={() => {
                   setEditingId(expenseId);
                 }}

@@ -17,25 +17,23 @@ const ExpenseList = ({ expenses, onEditExpense, onDeleteExpense }: Props) => {
   const [editingId, setEditingId] = useState<string | null>(null);
 
   return (
-    <>
-      <div className="flex flex-row bg-black p-10 rounded-xl shadow">
-        {expenses.length === 0 && <p>There is no expense yet.</p>}
-        {expenses.map((e) => {
-          return (
-            <ExpenseItem
-              key={e.id}
-              expenseId={e.id}
-              expenseDescription={e.description}
-              expenseAmount={e.amount}
-              onEditExpense={onEditExpense}
-              onDeleteExpense={onDeleteExpense}
-              isEditing={editingId === e.id}
-              setEditingId={setEditingId}
-            ></ExpenseItem>
-          );
-        })}
-      </div>
-    </>
+    <div className="flex flex-wrap m-auto gap-5">
+      {expenses.length === 0 && <p className="">There is no expense yet.</p>}
+      {expenses.map((e) => {
+        return (
+          <ExpenseItem
+            key={e.id}
+            expenseId={e.id}
+            expenseDescription={e.description}
+            expenseAmount={e.amount}
+            onEditExpense={onEditExpense}
+            onDeleteExpense={onDeleteExpense}
+            isEditing={editingId === e.id}
+            setEditingId={setEditingId}
+          ></ExpenseItem>
+        );
+      })}
+    </div>
   );
 };
 
