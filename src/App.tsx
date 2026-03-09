@@ -5,7 +5,10 @@ import ExpenseForm from "./components/ExpenseForm";
 import type { Expense } from "./types";
 
 function App() {
-  const [expense, setExpense] = useState<Expense[]>([]);
+  const [expense, setExpense] = useState<Expense[]>(() => {
+    const stored = localStorage.getItem("expenses");
+    return stored ? JSON.parse(stored) : [];
+  });
   const [totalAmount, setTotalAmount] = useState<number>(0);
 
   const editExpense = (
@@ -32,6 +35,7 @@ function App() {
   useEffect(() => {
     const total = expense.reduce((sum, e) => sum + e.amount, 0);
     setTotalAmount(total);
+    localStorage.setItem("expenses", JSON.stringify(expense));
   }, [expense]);
 
   return (
