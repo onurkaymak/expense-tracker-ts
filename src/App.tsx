@@ -8,12 +8,6 @@ function App() {
   const [expense, setExpense] = useState<Expense[]>([]);
   const [totalAmount, setTotalAmount] = useState<number>(0);
 
-  const totalExpenseCalc = (expense: Expense[]) => {
-    let total: number = 0;
-    expense.forEach((e) => (total += e.amount));
-    setTotalAmount(total);
-  };
-
   const editExpense = (
     editingId: string,
     editedExpense: string,
@@ -36,7 +30,8 @@ function App() {
   };
 
   useEffect(() => {
-    totalExpenseCalc(expense);
+    const total = expense.reduce((sum, e) => sum + e.amount, 0);
+    setTotalAmount(total);
   }, [expense]);
 
   return (
