@@ -17,7 +17,7 @@ const ExpenseList = ({ expenses, onEditExpense, onDeleteExpense }: Props) => {
   const [editingId, setEditingId] = useState<string | null>(null);
 
   return (
-    <div className="flex flex-wrap m-auto gap-5">
+    <div className="mt-5 flex flex-col gap-3">
       {expenses.length === 0 && <p className="">There is no expense yet.</p>}
       {expenses.map((e) => {
         return (
