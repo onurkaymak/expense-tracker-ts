@@ -13,11 +13,10 @@ const ExpenseForm = ({ onSetExpense }: Props) => {
 
   const formSubmitHandler = (e: React.FormEvent) => {
     e.preventDefault();
-    expenseInputRef.current?.value;
     const newExpense: Expense = {
       id: uuidv4(),
       description: expenseInputRef.current.value,
-      amount: parseInt(amountInputRef.current.value),
+      amount: parseFloat(amountInputRef.current.value),
     };
     onSetExpense((prevExpense) => [...prevExpense, newExpense]);
     expenseInputRef.current.value = "";
@@ -25,34 +24,40 @@ const ExpenseForm = ({ onSetExpense }: Props) => {
   };
 
   return (
-    <div className="mt-auto justify-items-center">
-      <div className="w-100">
-        <form
-          action=""
-          className="bg-gray-500 p-10 rounded-xl"
-          onSubmit={formSubmitHandler}
+    <div className="mt-5">
+      <form
+        className="bg-white rounded-xl p-5 shadow-sm"
+        onSubmit={formSubmitHandler}
+      >
+        <div className="mb-3">
+          <label className="text-sm font-medium text-gray-600 block mb-1">
+            Expense
+          </label>
+          <input
+            type="text"
+            name="expense-name"
+            className="w-full border border-gray-200 rounded-lg p-2 text-sm outline-none focus:border-purple-400"
+            ref={expenseInputRef}
+          />
+        </div>
+        <div className="mb-4">
+          <label className="text-sm font-medium text-gray-600 block mb-1">
+            Amount
+          </label>
+          <input
+            type="number"
+            name="expense-amount"
+            className="w-full border border-gray-200 rounded-lg p-2 text-sm outline-none focus:border-purple-400"
+            ref={amountInputRef}
+          />
+        </div>
+        <button
+          type="submit"
+          className="w-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-lg p-2 text-sm font-medium"
         >
-          <div>
-            <label htmlFor="expense-name">Expense:</label>
-            <input
-              type="text"
-              name="expense-name"
-              className="border-solid m-2"
-              ref={expenseInputRef}
-            />
-          </div>
-          <div>
-            <label htmlFor="expense-amount">Amount:</label>
-            <input
-              type="number"
-              name="expense-amount"
-              className="border-solid m-2"
-              ref={amountInputRef}
-            />
-          </div>
-          <button type="submit">Submit</button>
-        </form>
-      </div>
+          Add Expense
+        </button>
+      </form>
     </div>
   );
 };
