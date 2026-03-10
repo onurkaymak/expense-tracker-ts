@@ -69,39 +69,47 @@ const ExpenseItem = ({
           </div>
         </div>
       ) : (
-        <div>
-          <form action="" onSubmit={editHandler}>
-            <div>
-              <label htmlFor="expense">Expense:</label>
-              <input
-                type="string"
-                name="expense"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-              ></input>
-            </div>
-            <div>
-              <label htmlFor="amount">Amount:</label>
-              <input
-                type="number"
-                name="amount"
-                value={amount}
-                onChange={(e) => setAmount(Number(e.target.value))}
-              />
-            </div>
-            <div>
-              <button type="submit">Submit</button>
-              <button
-                type="button"
-                onClick={() => {
-                  setEditingId(null);
-                }}
-              >
-                Cancel
-              </button>
-            </div>
-          </form>
-        </div>
+        <form className="w-full" onSubmit={editHandler}>
+          <div className="mb-3">
+            <label className="text-sm font-medium text-gray-600 block mb-1">
+              Expense
+            </label>
+            <input
+              type="text"
+              name="expense"
+              value={description}
+              className="w-full border border-gray-200 rounded-lg p-2 text-sm outline-none focus:border-purple-400"
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </div>
+          <div className="mb-4">
+            <label className="text-sm font-medium text-gray-600 block mb-1">
+              Amount
+            </label>
+            <input
+              type="number"
+              name="amount"
+              value={amount}
+              className="w-full border border-gray-200 rounded-lg p-2 text-sm outline-none focus:border-purple-400"
+              onChange={(e) => setAmount(Number(e.target.value))}
+            />
+          </div>
+          <div className="flex gap-2">
+            <button
+              type="submit"
+              className="flex-1 bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-lg p-2 text-sm font-medium"
+            >
+              Save
+            </button>
+            <button
+              type="button"
+              className="flex-1 bg-gray-100 text-gray-600 rounded-lg p-2 text-sm font-medium"
+              onClick={() => setEditingId(null)}
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
       )}
     </div>
   );

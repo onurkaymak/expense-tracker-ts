@@ -18,7 +18,11 @@ const ExpenseList = ({ expenses, onEditExpense, onDeleteExpense }: Props) => {
 
   return (
     <div className="mt-5 flex flex-col gap-3">
-      {expenses.length === 0 && <p className="">There is no expense yet.</p>}
+      {expenses.length === 0 && (
+        <p className="text-center text-gray-600 text-sm py-6">
+          No expenses yet.
+        </p>
+      )}
       {expenses.map((e) => {
         return (
           <ExpenseItem
