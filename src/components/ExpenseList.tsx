@@ -9,6 +9,7 @@ interface Props {
     id: string,
     editedExpense: string,
     editedAmount: number,
+    editedDate: string,
   ) => void;
   onDeleteExpense: (id: string) => void;
 }
@@ -30,6 +31,7 @@ const ExpenseList = ({ expenses, onEditExpense, onDeleteExpense }: Props) => {
             expenseId={e.id}
             expenseDescription={e.description}
             expenseAmount={e.amount}
+            expenseDate={e.date}
             onEditExpense={onEditExpense}
             onDeleteExpense={onDeleteExpense}
             isEditing={editingId === e.id}

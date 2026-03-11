@@ -15,11 +15,13 @@ function App() {
     editingId: string,
     editedExpense: string,
     editedAmount: number,
+    editedDate: string,
   ) => {
     const updatedExpense: Expense = {
       id: editingId,
       description: editedExpense,
       amount: editedAmount,
+      date: editedDate,
     };
     setExpense((prev) =>
       prev.map((e) =>

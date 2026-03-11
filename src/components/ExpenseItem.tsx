@@ -5,10 +5,12 @@ interface Props {
   expenseId: string;
   expenseDescription: string;
   expenseAmount: number;
+  expenseDate: string;
   onEditExpense: (
     id: string,
     editedExpense: string,
     editedAmount: number,
+    editedDate: string,
   ) => void;
   onDeleteExpense: (id: string) => void;
   isEditing: boolean;
@@ -19,6 +21,7 @@ const ExpenseItem = ({
   expenseId,
   expenseDescription,
   expenseAmount,
+  expenseDate,
   onEditExpense,
   onDeleteExpense,
   isEditing,
@@ -26,17 +29,19 @@ const ExpenseItem = ({
 }: Props) => {
   const [description, setDescription] = useState<string>("");
   const [amount, setAmount] = useState<number>(0);
+  const [date, setDate] = useState<string | null>(null);
 
   useEffect(() => {
     if (isEditing) {
       setDescription(expenseDescription);
       setAmount(expenseAmount);
+      setDate(expenseDate);
     }
-  }, [isEditing, expenseDescription, expenseAmount]);
+  }, [isEditing, expenseDescription, expenseAmount, expenseDate]);
 
   const editHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    onEditExpense(expenseId, description, amount);
+    onEditExpense(expenseId, description, amount, date);
     setEditingId(null);
   };
 
@@ -53,6 +58,7 @@ const ExpenseItem = ({
           <p className="font-normal w-20 text-right shrink-0 mx-4">
             $ {expenseAmount}
           </p>
+          <p>{expenseDate}</p>
           <div className="flex shrink-0 ml-2">
             <button
               className="text-sm text-white rounded px-2 py-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity m-1"
@@ -92,6 +98,19 @@ const ExpenseItem = ({
               value={amount}
               className="w-full border border-gray-200 rounded-lg p-2 text-sm outline-none focus:border-purple-400"
               onChange={(e) => setAmount(Number(e.target.value))}
+            />
+          </div>
+          <div>
+            <input
+              type="date"
+              value={date ? new Date(date).toLocaleDateString("en-CA") : ""}
+              onChange={(e) =>
+                setDate(
+                  new Date(e.target.value + "T00:00:00").toLocaleDateString(
+                    "en-US",
+                  ),
+                )
+              }
             />
           </div>
           <div className="flex gap-2">

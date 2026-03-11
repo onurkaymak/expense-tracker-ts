@@ -10,6 +10,7 @@ interface Props {
 const ExpenseForm = ({ onSetExpense }: Props) => {
   const expenseInputRef = useRef<HTMLInputElement>(null);
   const amountInputRef = useRef<HTMLInputElement>(null);
+  const dateInputRef = useRef<HTMLInputElement>(null);
 
   const formSubmitHandler = (e: React.FormEvent) => {
     e.preventDefault();
@@ -17,10 +18,14 @@ const ExpenseForm = ({ onSetExpense }: Props) => {
       id: uuidv4(),
       description: expenseInputRef.current.value,
       amount: parseFloat(amountInputRef.current.value),
+      date: new Date(
+        dateInputRef.current.value + "T00:00:00",
+      ).toLocaleDateString("en-US"),
     };
     onSetExpense((prevExpense) => [...prevExpense, newExpense]);
     expenseInputRef.current.value = "";
     amountInputRef.current.value = "";
+    dateInputRef.current.value = "";
   };
 
   return (
@@ -50,6 +55,9 @@ const ExpenseForm = ({ onSetExpense }: Props) => {
             className="w-full border border-gray-200 rounded-lg p-2 text-sm outline-none focus:border-purple-400"
             ref={amountInputRef}
           />
+        </div>
+        <div>
+          <input type="date" ref={dateInputRef} />
         </div>
         <button
           type="submit"
