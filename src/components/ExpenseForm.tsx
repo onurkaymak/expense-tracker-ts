@@ -35,10 +35,14 @@ const ExpenseForm = ({ onSetExpense }: Props) => {
         onSubmit={formSubmitHandler}
       >
         <div className="mb-3">
-          <label className="text-sm font-medium text-gray-600 block mb-1">
+          <label
+            htmlFor="expense"
+            className="text-sm font-medium text-gray-600 block mb-1"
+          >
             Expense
           </label>
           <input
+            id="expense"
             type="text"
             name="expense-name"
             className="w-full border border-gray-200 rounded-lg p-2 text-sm outline-none focus:border-purple-400"
@@ -46,18 +50,33 @@ const ExpenseForm = ({ onSetExpense }: Props) => {
           />
         </div>
         <div className="mb-4">
-          <label className="text-sm font-medium text-gray-600 block mb-1">
+          <label
+            htmlFor="amount"
+            className="text-sm font-medium text-gray-600 block mb-1"
+          >
             Amount
           </label>
           <input
+            id="amount"
             type="number"
             name="expense-amount"
             className="w-full border border-gray-200 rounded-lg p-2 text-sm outline-none focus:border-purple-400"
             ref={amountInputRef}
           />
         </div>
-        <div>
-          <input type="date" ref={dateInputRef} />
+        <div className="mb-5">
+          <label
+            htmlFor="date"
+            className="text-sm font-medium text-gray-600 block mb-1"
+          >
+            Date
+          </label>
+          <input
+            id="date"
+            type="date"
+            ref={dateInputRef}
+            className="w-full border border-gray-200 rounded-lg p-2 text-sm outline-none focus:border-purple-400"
+          />
         </div>
         <button
           type="submit"
