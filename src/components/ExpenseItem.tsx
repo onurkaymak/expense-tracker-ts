@@ -30,6 +30,7 @@ const ExpenseItem = ({
   const [description, setDescription] = useState<string>("");
   const [amount, setAmount] = useState<number>(0);
   const [date, setDate] = useState<string | null>(null);
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
   useEffect(() => {
     if (isEditing) {
@@ -46,7 +47,9 @@ const ExpenseItem = ({
   };
 
   return (
-    <div className="flex items-center bg-white rounded-xl p-4 w-full shadow-sm group">
+    <div
+      className={`flex items-center bg-white rounded-xl p-4 shadow-sm group mx-auto transition-all duration-300 ${isMenuOpen ? "w-full" : "w-11/12"}`}
+    >
       {!isEditing ? (
         <div className="flex items-center justify-between w-full">
           <div className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center mr-3 shrink-0">
@@ -56,22 +59,31 @@ const ExpenseItem = ({
             <p className="font-medium truncate">{expenseDescription}</p>
             <p className="text-xs text-gray-400">{expenseDate}</p>
           </div>
-          <p className="font-normal w-20 text-right shrink-0 mx-4">
-            $ {expenseAmount}
-          </p>
+          <p className="font-large w-20  shrink-0 mx-4">$ {expenseAmount}</p>
           <div className="flex shrink-0 ml-2">
-            <button
-              className="text-sm text-white rounded px-2 py-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity m-1"
-              onClick={() => setEditingId(expenseId)}
-            >
-              Edit
-            </button>
-            <button
-              className="text-sm text-white rounded px-2 py-1 bg-red-500 opacity-0 group-hover:opacity-100 transition-opacity m-1"
-              onClick={() => onDeleteExpense(expenseId)}
-            >
-              Delete
-            </button>
+            {!isMenuOpen ? (
+              <div
+                className={`flex shrink-0 ml-2 ${isMenuOpen ? "w-20" : "w-6"}`}
+                onClick={() => setIsMenuOpen(true)}
+              >
+                ⋮
+              </div>
+            ) : (
+              <div>
+                <button
+                  className="text-sm text-white rounded px-2 py-1 bg-indigo-500 m-1"
+                  onClick={() => setEditingId(expenseId)}
+                >
+                  Edit
+                </button>
+                <button
+                  className="text-sm text-white rounded px-2 py-1 bg-red-500 m-1"
+                  onClick={() => onDeleteExpense(expenseId)}
+                >
+                  Delete
+                </button>
+              </div>
+            )}
           </div>
         </div>
       ) : (
