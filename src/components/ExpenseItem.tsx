@@ -73,10 +73,12 @@ const ExpenseItem = ({
             💸
           </div>
           <div className="flex flex-col flex-1 min-w-0">
-            <p className="font-medium truncate">{expenseDescription}</p>
+            <p className="font-small  text-lg">{expenseDescription}</p>
             <p className="text-xs text-gray-400">{expenseDate}</p>
           </div>
-          <p className="font-large w-20  shrink-0 mx-4">$ {expenseAmount}</p>
+          <p className="font-large w-20  shrink-0 mx-4 text-2xl  text-gray-600 font-semibold">
+            $ {expenseAmount}
+          </p>
           <div className="flex shrink-0 ml-2">
             {!isMenuOpen ? (
               <div
@@ -129,10 +131,14 @@ const ExpenseItem = ({
               onChange={(e) => setAmount(Number(e.target.value))}
             />
           </div>
-          <div>
+          <div className="mb-4">
+            <label className="text-sm font-medium text-gray-600 block mb-1">
+              Date
+            </label>
             <input
               type="date"
               value={date ? new Date(date).toLocaleDateString("en-CA") : ""}
+              className="w-full border border-gray-200 rounded-lg p-2 text-sm outline-none focus:border-purple-400"
               onChange={(e) =>
                 setDate(
                   new Date(e.target.value + "T00:00:00").toLocaleDateString(

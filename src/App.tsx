@@ -54,7 +54,7 @@ function App() {
         `,
         }}
       />
-      <div className="relative z-10 max-w-md mx-auto px-5 py-40">
+      <div className="relative z-10 max-w-md mx-auto px-5 py-25">
         <div className="bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-400 rounded-xl p-5 text-center">
           <p className="text-white text-sm">Total Expenses</p>
           <h1 className="text-white mt-2 text-xl font-semibold">

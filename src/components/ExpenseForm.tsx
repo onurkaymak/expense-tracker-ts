@@ -29,7 +29,7 @@ const ExpenseForm = ({ onSetExpense }: Props) => {
   };
 
   return (
-    <div className="mt-5">
+    <div className="mt-16">
       <form
         className="bg-white rounded-xl p-5 shadow-sm"
         onSubmit={formSubmitHandler}
