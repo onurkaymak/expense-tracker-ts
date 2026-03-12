@@ -28,9 +28,9 @@ const ExpenseList = ({ expenses, onEditExpense, onDeleteExpense }: Props) => {
 
   return (
     <div className="mt-5 flex flex-col gap-3">
-      <div>
+      <div className="flex justify-end">
         <button
-          className="bg-gray-300 rounded-lg p-2"
+          className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-lg p-2 text-sm font-medium"
           onClick={() => setIsSortedNewest((prev) => !prev)}
         >
           {!isSortedNewest ? "Show Newest First" : "Show Oldest First"}
