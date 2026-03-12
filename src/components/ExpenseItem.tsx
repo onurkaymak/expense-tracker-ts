@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import type { FormEvent } from "react";
 
 interface Props {
@@ -32,6 +32,8 @@ const ExpenseItem = ({
   const [date, setDate] = useState<string | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
+  const cardClickRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     if (isEditing) {
       setDescription(expenseDescription);
@@ -39,6 +41,20 @@ const ExpenseItem = ({
       setDate(expenseDate);
     }
   }, [isEditing, expenseDescription, expenseAmount, expenseDate]);
+
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (
+        isMenuOpen &&
+        cardClickRef.current &&
+        !cardClickRef.current.contains(e.target as Node)
+      ) {
+        setIsMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, [cardClickRef, isMenuOpen]);
 
   const editHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -49,6 +65,7 @@ const ExpenseItem = ({
   return (
     <div
       className={`flex items-center bg-white rounded-xl p-4 shadow-sm group mx-auto transition-all duration-300 ${isMenuOpen ? "w-full" : "w-11/12"}`}
+      ref={cardClickRef}
     >
       {!isEditing ? (
         <div className="flex items-center justify-between w-full">
