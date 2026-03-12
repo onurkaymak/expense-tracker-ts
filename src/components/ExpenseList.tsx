@@ -16,15 +16,32 @@ interface Props {
 
 const ExpenseList = ({ expenses, onEditExpense, onDeleteExpense }: Props) => {
   const [editingId, setEditingId] = useState<string | null>(null);
+  const [isSortedNewest, setIsSortedNewest] = useState<boolean>(true);
+
+  const sortedExpenses = [...expenses].sort((a: Expense, b: Expense) => {
+    if (isSortedNewest) {
+      return new Date(b.date).getTime() - new Date(a.date).getTime();
+    } else {
+      return new Date(a.date).getTime() - new Date(b.date).getTime();
+    }
+  });
 
   return (
     <div className="mt-5 flex flex-col gap-3">
+      <div>
+        <button
+          className="bg-gray-300 rounded-lg p-2"
+          onClick={() => setIsSortedNewest((prev) => !prev)}
+        >
+          {!isSortedNewest ? "Show Newest First" : "Show Oldest First"}
+        </button>
+      </div>
       {expenses.length === 0 && (
         <p className="text-center text-gray-600 text-sm py-6">
           No expenses yet.
         </p>
       )}
-      {expenses.map((e) => {
+      {sortedExpenses.map((e) => {
         return (
           <ExpenseItem
             key={e.id}
