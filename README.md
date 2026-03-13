@@ -42,19 +42,23 @@
 
 <u>Table of Contents</u>
 
-- <a href="#🌐-about-the-project">About the Project</a>
-  - <a href="#📖-description">Description</a>
-  - <a href="#🛠-built-with">Built With</a>
-  - <a href="#🦠-known-bugs">Known Bugs</a>
-- <a href="#🏁-getting-started">Getting Started</a>
-  - <a href="#📋-prerequisites">Prerequisites</a>
-  - <a href="#⚙️-setup-and-use">Setup and Use</a>
-- <a href="#✉️-contact-and-support">Contact</a>
-- <a href="#⚖️-license">License</a>
+- <a href="#about-the-project">About the Project</a>
+  - <a href="#description">Description</a>
+  - <a href="#built-with">Built With</a>
+  - <a href="#known-bugs">Known Bugs</a>
+- <a href="#getting-started">Getting Started</a>
+  - <a href="#prerequisites">Prerequisites</a>
+  - <a href="#setup-and-use">Setup and Use</a>
+- <a href="#contact-and-support">Contact</a>
+- <a href="#license">License</a>
 
 ---
 
+<a name="about-the-project"></a>
+
 ## 🌐 About the Project
+
+<a name="description"></a>
 
 ### 📖 Description
 
@@ -62,9 +66,13 @@ _Expense Tracker_ is a personal finance tool that allows users to manage their d
 
 Built as a TypeScript practice project to sharpen React and TypeScript fundamentals before returning to full stack development.
 
+<a name="known-bugs"></a>
+
 ### 🦠 Known Bugs
 
 - If any bugs are discovered, please contact the author.
+
+<a name="built-with"></a>
 
 ### 🛠 Built With
 
@@ -76,11 +84,17 @@ Built as a TypeScript practice project to sharpen React and TypeScript fundament
 
 ---
 
+<a name="getting-started"></a>
+
 ## 🏁 Getting Started
+
+<a name="prerequisites"></a>
 
 ### 📋 Prerequisites
 
 ⭐ You must have Node.js and npm installed on your computer.
+
+<a name="setup-and-use"></a>
 
 ### ⚙️ Setup and Use
 
@@ -105,6 +119,8 @@ Built as a TypeScript practice project to sharpen React and TypeScript fundament
 
 ---
 
+<a name="contact-and-support"></a>
+
 ### ✉️ Contact and Support
 
 <p>
@@ -113,6 +129,8 @@ Built as a TypeScript practice project to sharpen React and TypeScript fundament
 </p>
 
 ---
+
+<a name="license"></a>
 
 ### ⚖️ License
 
