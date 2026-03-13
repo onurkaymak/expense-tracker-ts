@@ -5,25 +5,8 @@
       ___________________________
     </p>
     <p align="center">
-        <a href="https://onurkaymak.com/">
+        <a href="https://github.com/onurkaymak">
             <strong>By Onur Kaymak</strong>
-        </a>
-    </p>
-    <p align="center">
-        <a href="https://github.com/onurkaymak/expense-tracker-ts/graphs/contributors">
-            <img src="https://img.shields.io/github/contributors/onurkaymak/expense-tracker-ts.svg?style=plastic">
-        </a>
-        &nbsp;
-        <a href="https://github.com/onurkaymak/expense-tracker-ts/stargazers">
-            <img src="https://img.shields.io/github/stars/onurkaymak/expense-tracker-ts.svg?color=yellow&style=plastic">
-        </a>
-        &nbsp;
-        <a href="https://github.com/onurkaymak/expense-tracker-ts/issues">
-            <img src="https://img.shields.io/github/issues/onurkaymak/expense-tracker-ts?style=plastic">
-        </a>
-        &nbsp;
-        <a href="https://github.com/onurkaymak/expense-tracker-ts/blob/main/LICENSE">
-            <img src="https://img.shields.io/github/license/onurkaymak/expense-tracker-ts?color=orange&style=plastic">
         </a>
     </p>
 </p>
